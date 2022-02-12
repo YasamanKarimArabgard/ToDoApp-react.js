@@ -3,7 +3,7 @@ import { Modal } from 'react-bootstrap'
 import ModalHeader from 'react-bootstrap/ModalHeader'
 import ToDoForm from '../ToDoForm';
 
-const EditModal = ({ show, todo, addTodoHandeler, onUpdatedTodo, editTodo, edit }) => {
+const EditModal = ({ show, editTodo, edit , addTodoHandeler}) => {
 
     return (
         <>

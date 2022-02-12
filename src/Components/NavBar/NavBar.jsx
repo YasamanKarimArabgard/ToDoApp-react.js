@@ -1,6 +1,9 @@
 import React from 'react';
+import { useTodos } from '../context/TodoProvider/TodoProvider'
 
-const NavBar = ({todos ,unCompeleted, compeleted, allTodos }) => {
+const NavBar = ({unCompeleted, compeleted, allTodos }) => {
+
+    const todos = useTodos()
 
     if (!unCompeleted) return todos.length == 0 ? null : 
     <p className='col-12 rounded border p-1 bg-white my-1 py-2 text-success text-center'>You have done it all !</p> ;
