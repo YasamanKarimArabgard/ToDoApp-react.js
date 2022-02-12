@@ -1,8 +1,9 @@
 import React from 'react';
 
-const NavBar = ({ unCompeleted, compeleted, allTodos }) => {
+const NavBar = ({todos ,unCompeleted, compeleted, allTodos }) => {
 
-    if (!unCompeleted) return null;
+    if (!unCompeleted) return todos.length == 0 ? null : 
+    <p className='col-12 rounded border p-1 bg-white my-1 py-2 text-success text-center'>You have done it all !</p> ;
     return (
         <header className='col-12 bg-white d-flex align-items-center justify-content-between mb-1'>
             <div className='col-4 d-flex align-items-center rounded border px-1'>
@@ -15,7 +16,7 @@ const NavBar = ({ unCompeleted, compeleted, allTodos }) => {
             </div>
             <div className='col-4 d-flex align-items-center rounded border px-1'>
                 <span className='text-light px-1 badge bg-success text-light'>{compeleted}</span>
-                <h1 className='p-2 secondary text-truncate'>Compeleted</h1>
+                <h1 className='p-2 text-secondary text-truncate'>Compeleted</h1>
             </div>
         </header>
 
