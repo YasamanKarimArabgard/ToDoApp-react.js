@@ -13,7 +13,7 @@ const FilterDate = ({ selectedDateOption , onChange }) => {
 
     return (
         <div className='col-6 col-sm-12 mt-1 d-flex align-items-center justify-content-between'>
-        <p className='text-muted'>Date : </p>
+        <p className='text-info'>Date : </p>
             <Select options={options}
                 value={selectedDateOption}
                 onChange={onChange} />
