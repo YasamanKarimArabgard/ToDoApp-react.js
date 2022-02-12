@@ -11,7 +11,7 @@ const FilterTodo = ({ selectedOption, onChange }) => {
 
     return (
         <div className='col-6 col-sm-12 mt-1 d-flex  align-items-center justify-content-between'>
-          <p className='text-info'>todo :  </p>
+          <p className='filter-label'>todo :  </p>
             <Select
                 value={selectedOption}
                 onChange={onChange}

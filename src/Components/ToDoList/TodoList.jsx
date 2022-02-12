@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import EditModal from '../ToDoForm/EditModal';
+import ToDoForm from '../ToDoForm/ToDoForm';
+import Todo from './Todo/Todo';
 
-const TodoList = ({ todos, onCompelete, onRemove}) => {
+const TodoList = ({ todos, onDelete, onCompelete, onUpdatedTodo}) => {
+
+    const [edit, setEdit] = useState({ id: null, text: ''})
+
+    const editTodo = (newValue) => {
+
+        onUpdatedTodo(edit.id, newValue)
+        setEdit({id: null, text : ''})
+    }
 
     const renderToDos = () => {
-        if (todos.length === 0) return <h2 className='text-center'>You have nothing to do</h2>;
-
+        if (todos.length === 0) return <h2 className='text-center text-secondary border rounded p-2'>Set something todo</h2>;
         return (todos.map(todo => {
-            return <li key={todo.id} onClick={() => onCompelete(todo.id)} className='list-group-item col-12 d-flex justify-content-between'>
-                <p className='col-9'>{todo.text}</p>
-                <div className='col-2 d-flex justify-content-evenly'>
-                    <i class="bi bi-trash-fill text-danger" onClick={()=>onRemove(todo.id)}></i>
-                    <i class="bi bi-pencil-square text-inf"></i>
-                </div>
-            </li>
+            return <Todo
+                key={todo.id} todo={todo}
+                onDelete={() => onDelete(todo.id)}
+                onCompelete={() => onCompelete(todo.id)}
+                onEdit={() => setEdit(todo)}
+            />
+
         }))
     }
 
     return (
-        <div className='col-11 bg-white mt-2 rounded'>
-            <ul className='list-group'>
-                {renderToDos()}
-            </ul>
+        <div className='col-12 bg-white mt-2 rounded'>
+            <ul className='list-group col-12'>{edit.id ? <EditModal editTodo={editTodo} edit={edit}/> : renderToDos()}</ul>
         </div>
     );
 };
