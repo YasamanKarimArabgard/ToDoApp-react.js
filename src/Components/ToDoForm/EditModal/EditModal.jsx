@@ -3,15 +3,20 @@ import { Modal } from 'react-bootstrap'
 import ModalHeader from 'react-bootstrap/ModalHeader'
 import ToDoForm from '../ToDoForm';
 
-const EditModal = ({ show, editTodo, edit, addTodoHandler }) => {
+const EditModal = ({ editTodo, edit, addTodoHandler }) => {
+
+    const [show, setShow] = useState(false);
+
+    const showModal = () => setShow(false)
+    const closeModal = () => setShow(true)
 
     return (
         <>
             <Modal
-                show={() => show()}
+                show={() => showModal()}
                 backdrop="static"
                 keyboard={false}
-            // onHide={()=>setShow(true)}
+                onHide={() => closeModal()}
             >
                 <ModalHeader closeButton>
                     <Modal.Title>

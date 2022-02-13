@@ -6,7 +6,7 @@ const NavBar = ({unCompeleted, compeleted, allTodos }) => {
     const todos = useTodos()
 
     if (!unCompeleted) return todos.length == 0 ? null : 
-    <p className='col-12 rounded border p-1 bg-white my-1 py-2 text-success text-center'>You have done it all !</p> ;
+    <p className='col-12 rounded border border-success p-1 bg-white my-1 py-2 text-success text-center'>You have done it all !</p> ;
     return (
         <header className='col-12 bg-white d-flex align-items-center justify-content-between mb-1'>
             <div className='col-4 d-flex align-items-center rounded border px-1'>
