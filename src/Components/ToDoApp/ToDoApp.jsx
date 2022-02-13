@@ -5,8 +5,7 @@ import FilterTodo from '../Filter/FilterTodo/FilterTodo';
 import ToDoList from '../ToDoList/TodoList'
 import "./ToDoApp.css";
 import FilterDate from '../Filter/FilterDate/FilterDate';
-
-
+import { useTodos, useTodosActions } from '../context/TodoProvider/TodoProvider'
 
 const ToDoApp = () => {
 
@@ -16,7 +15,7 @@ const ToDoApp = () => {
   const [show, setShow] = useState(false);
 
   const todos = useTodos();
-  const {todoHandeler, updatedTodo} = useTodosActions();
+  const { todoHandler, updatedTodo } = useTodosActions();
 
   useEffect(() => {
     filterTodos(selectedOption.value)
@@ -25,8 +24,6 @@ const ToDoApp = () => {
   useEffect(() => {
     filterTodos(selectedDateOption.value)
   }, [todos, selectedDateOption])
-
-  
 
   const filterTodos = (status) => {
     switch (status) {
@@ -74,7 +71,7 @@ const ToDoApp = () => {
           compeleted={todos.filter(t => t.isCompeleted).length}
         />
 
-        <ToDoForm addTodoHandeler={todoHandeler} />
+        <ToDoForm addTodoHandler={todoHandler} />
 
         {
           todos.length == 0 ?
