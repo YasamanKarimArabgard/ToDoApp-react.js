@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const ToDoForm = (props) => {
     
-    const [input, setInput] = useState(props.edit ? props.edit.text : '')
+    const [input, setInput] = useState( props.edit ? props.edit.text : '')
 
     useEffect(() => {
         inputRef.current.focus()
@@ -38,7 +38,7 @@ const ToDoForm = (props) => {
                     value={input}
                     ref={inputRef}>
                 </input>
-                <button type='submit' className={` col-3 col-sm-2 ${props.edit ? 'btn btn-sm btn-outline-secondary px-3' : 'btn btn-sm btn-primary px-3'}`}>
+                <button type='submit' className={` col-3 col-sm-2 ${ props.edit ? 'btn btn-sm btn-outline-secondary px-3' : 'btn btn-sm btn-primary px-3'}`}>
                     {props.edit ? 'Update' : <i class="bi bi-plus"> New</i>}
                 </button>
             </form>
