@@ -39,7 +39,7 @@ export const useTodosActions = () => {
 
     const todos = useContext(todosContext);
 
-    const todoHandeler = (input) => {
+    const todoHandler = (input) => {
 
         let today = new Date();
         let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -56,7 +56,7 @@ export const useTodosActions = () => {
         setTodos([...todos, NewTodo])
     }
 
-    const compeleteToDo = (id) => {
+    const compeleteTodo = (id) => {
         const index = todos.findIndex(todo => todo.id === id)
 
         const selectedTodos = { ...todos[index] }
@@ -94,6 +94,6 @@ export const useTodosActions = () => {
 
     }
 
-    return {todoHandeler,compeleteToDo, removeTodo, updatedTodo}
+    return {todoHandler,compeleteTodo, removeTodo, updatedTodo}
 }
 
