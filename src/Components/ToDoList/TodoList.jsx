@@ -3,16 +3,18 @@ import EditModal from '../ToDoForm/EditModal/EditModal';
 import ToDoForm from '../ToDoForm/ToDoForm';
 import Todo from './Todo/Todo';
 import { useTodos } from '../context/TodoProvider/TodoProvider';
+import { useTodosActions } from '../context/TodoProvider/TodoProvider';
 
-const TodoList = ({ onUpdatedTodo, onEdit }) => {
+const TodoList = ({ onUpdatedTodo, onEdit, onCompelete }) => {
 
     const todos = useTodos();
+    const dispatch = useTodosActions();
+
 
     const [edit, setEdit] = useState({ id: null, text: '' })
 
     const editTodo = (newValue) => {
-
-        onUpdatedTodo(edit.id, newValue)
+        dispatch({type:'updatedTodo',edit.id, vallue:newValue})
         setEdit({ id: null, text: '' })
     }
 
@@ -22,7 +24,9 @@ const TodoList = ({ onUpdatedTodo, onEdit }) => {
             return <Todo
                 key={todo.id}
                 todo={todo}
-                onEdit={() => setEdit(todo)} />
+                onEdit={() => setEdit(todo)}
+                onCompelete={() => dispatch({type : 'compeleteTodo', id: todo.id})}
+            />
         }))
     }
 

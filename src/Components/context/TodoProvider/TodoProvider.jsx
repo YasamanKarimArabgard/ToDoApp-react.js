@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect} from 'react';
+import React, { useContext, useState, useEffect, useReducer } from 'react';
 
 const getItemsfromLS = () => {
     const items = localStorage.getItem("todos")
@@ -10,12 +10,63 @@ const getItemsfromLS = () => {
     }
 }
 
+const intialState = getItemsfromLS();
+
+const reducer = (state, action) => {
+
+    switch (action.type) {
+        //     case 'todoHandler':
+        //         let today = new Date();
+        //         let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        //         let time = today.getHours() + ":" + today.getMinutes();
+        //         let dateTime = date + ' ' + time;
+
+        //         const NewTodo = {
+        //             id: Math.floor(Math.random() * 1000),
+        //             text: action.value,
+        //             isCompeleted: false,
+        //             created: dateTime
+        //         }
+
+        //         return ([...state], action.value)
+        case 'removeTodo':
+            const removeTodos = state.filter(todo => todo.id !== action.id)
+            return removeTodos
+        case 'compeleteTodo':
+            const index = state.findIndex(todo => todo.id === action.id)
+
+            const selectedTodos = { ...state[index] }
+            selectedTodos.isCompeleted = !selectedTodos.isCompeleted;
+
+            const updatedTodosCompelete = [...state]
+            updatedTodosCompelete[index] = selectedTodos;
+            return updatedTodosCompelete
+        case 'updatedTodo':
+            let today = new Date();
+            let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            let time = today.getHours() + ":" + today.getMinutes();
+            let dateTime = date + ' ' + time;
+
+            const index2 = state.findIndex(todo => todo.id === action.id)
+
+            const selecteTodos = { ...state[index2] }
+            selecteTodos.text = action.value;
+            selecteTodos.updated = dateTime
+            const updatedTodos = [...state]
+            updatedTodos[index2] = selecteTodos;
+            return updatedTodos
+
+        default:
+            return state
+    }
+}
+
 const todosContext = React.createContext();
-const setTodosContext = React.createContext();
+const todosContextDispatcher = React.createContext();
 
 const TodoProvider = ({ children }) => {
 
-    const [todos, setTodos] = useState(getItemsfromLS())
+    const [todos, dispatch] = useReducer(reducer, intialState)
 
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(todos));
@@ -23,9 +74,9 @@ const TodoProvider = ({ children }) => {
 
     return (
         <todosContext.Provider value={todos}>
-            <setTodosContext.Provider value={setTodos}>
+            <todosContextDispatcher.Provider value={dispatch}>
                 {children}
-            </setTodosContext.Provider>
+            </todosContextDispatcher.Provider>
         </todosContext.Provider>
     );
 };
@@ -35,65 +86,52 @@ export default TodoProvider;
 export const useTodos = () => useContext(todosContext);
 
 export const useTodosActions = () => {
-    const setTodos = useContext(setTodosContext)
+    const setTodos = useContext(todosContextDispatcher)
 
-    const todos = useContext(todosContext);
+    // const todos = useContext(todosContext);
 
-    const todoHandler = (input) => {
+    // const todoHandler = (input) => {
+    //     setTodos([...todos, NewTodo])
+    // }
 
-        let today = new Date();
-        let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-        let time = today.getHours() + ":" + today.getMinutes();
-        let dateTime = date + ' ' + time;
+    // const compeleteTodo = (id) => {
+    //     const index = todos.findIndex(todo => todo.id === id)
 
-        const NewTodo = {
-            id: Math.floor(Math.random() * 1000),
-            text: input,
-            isCompeleted: false,
-            created: dateTime
-        }
+    //     const selectedTodos = { ...todos[index] }
+    //     selectedTodos.isCompeleted = !selectedTodos.isCompeleted;
 
-        setTodos([...todos, NewTodo])
-    }
+    //     const updatedTodos = [...todos]
+    //     updatedTodos[index] = selectedTodos;
+    //     setTodos(updatedTodos);
+    //     // console.log(updatedTodos);
+    // }
 
-    const compeleteTodo = (id) => {
-        const index = todos.findIndex(todo => todo.id === id)
+    // const removeTodo = (id) => {
+    //     // console.log(id);
+    //     const removeTodos = todos.filter(todo => todo.id !== id)
+    //     setTodos(removeTodos)
+    // }
 
-        const selectedTodos = { ...todos[index] }
-        selectedTodos.isCompeleted = !selectedTodos.isCompeleted;
+    // const updatedTodo = (id, newValue) => {
 
-        const updatedTodos = [...todos]
-        updatedTodos[index] = selectedTodos;
-        setTodos(updatedTodos);
-        // console.log(updatedTodos);
-    }
+    //     let today = new Date();
+    //     let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    //     let time = today.getHours() + ":" + today.getMinutes();
+    //     let dateTime = date + ' ' + time;
+    //     // console.log(id);
 
-    const removeTodo = (id) => {
-        // console.log(id);
-        const filterTodos = todos.filter(todo => todo.id !== id)
-        setTodos(filterTodos)
-    }
+    //     const index = todos.findIndex(todo => todo.id === id)
 
-    const updatedTodo = (id, newValue) => {
+    //     const selecteTodos = { ...todos[index] }
+    //     selecteTodos.text = newValue;
+    //     selecteTodos.updated = dateTime
 
-        let today = new Date();
-        let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-        let time = today.getHours() + ":" + today.getMinutes();
-        let dateTime = date + ' ' + time;
-        // console.log(id);
+    //     const updatedTodos = [...todos]
+    //     updatedTodos[index] = selecteTodos;
+    //     setTodos(updatedTodos);
 
-        const index = todos.findIndex(todo => todo.id === id)
+    // }
 
-        const selecteTodos = { ...todos[index] }
-        selecteTodos.text = newValue;
-        selecteTodos.updated = dateTime
-
-        const updatedTodos = [...todos]
-        updatedTodos[index] = selecteTodos;
-        setTodos(updatedTodos);
-
-    }
-
-    return {todoHandler,compeleteTodo, removeTodo, updatedTodo}
+    // return { todoHandler, compeleteTodo, removeTodo, updatedTodo }
 }
 
