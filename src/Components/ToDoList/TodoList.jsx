@@ -20,7 +20,9 @@ const TodoList = ({ onUpdatedTodo, onEdit }) => {
         if (todos.length === 0) return <h2 className='text-center text-secondary border rounded p-2'>Set something todo</h2>;
         return (todos.map(todo => {
             return <Todo
-                key={todo.id} todo={todo} onEdit={()=>setEdit(todo)} />
+                key={todo.id}
+                todo={todo}
+                onEdit={() => setEdit(todo)} />
         }))
     }
 

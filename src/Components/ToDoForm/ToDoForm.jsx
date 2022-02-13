@@ -10,12 +10,12 @@ const ToDoForm = (props) => {
 
     const inputRef = useRef(null)
 
-    const ChangeHandeler = (e) => {
+    const ChangeHandler = (e) => {
         // console.log(e.target.value);
         setInput(e.target.value)
     }
 
-    const submitHandeler = (e) => {
+    const submitHandler = (e) => {
         e.preventDefault()
 
         if (!input) {
@@ -23,18 +23,18 @@ const ToDoForm = (props) => {
             return;
         }
 
-        props.addTodoHandeler(input)
+        props.addTodoHandler(input)
         setInput('')
     }
   
     return (
         <>
-            <form onSubmit={submitHandeler} className='col-12 bg-white d-flex justify-content-between align-items-center rounded border p-1'>
+            <form onSubmit={submitHandler} className='col-12 bg-white d-flex justify-content-between align-items-center rounded border p-1'>
                 <input
                     type='text'
                     className='w-75 h-75 form-control mx-1'
                     placeholder={props.edit ? 'Write it again' : 'Plan something...'}
-                    onChange={ChangeHandeler}
+                    onChange={ChangeHandler}
                     value={input}
                     ref={inputRef}>
                 </input>

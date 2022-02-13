@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../NavBar/NavBar';
 import ToDoForm from '../ToDoForm/ToDoForm'
+import FilterDate from '../Filter/FilterDate/FilterDate';
 import FilterTodo from '../Filter/FilterTodo/FilterTodo';
 import ToDoList from '../ToDoList/TodoList'
 import "./ToDoApp.css";
-import FilterDate from '../Filter/FilterDate/FilterDate';
 import { useTodos, useTodosActions } from '../context/TodoProvider/TodoProvider'
 
 const ToDoApp = () => {
