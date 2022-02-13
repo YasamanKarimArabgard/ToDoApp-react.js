@@ -27,10 +27,10 @@ const ToDoApp = () => {
   const filterTodos = (status) => {
 
     switch (status) {
-      case 'Compeleted':
+      case 'Completed':
         setFilteredTodos(todos.filter(t => t.isCompeleted));
         break;
-      case 'Notcompeleted':
+      case 'Notcompleted':
         setFilteredTodos(todos.filter(t => !t.isCompeleted));
         break;
       default:
@@ -67,14 +67,11 @@ const ToDoApp = () => {
     <div className='Todo_container col-12 col-sm-10 col-md-12 col-xl-10 p-1 mt-3 d-flex flex-column align-items-center'>
       <div className='col-12 rounded border p-1 bg-white'>
         <NavBar
-          unCompeleted={todos.filter(t => !t.isCompeleted).length}
+          unCompleted={todos.filter(t => !t.isCompleted).length}
           allTodos={todos.length}
-          compeleted={todos.filter(t => t.isCompeleted).length} />
+          completed={todos.filter(t => t.isCompleted).length} />
 
-        <ToDoForm 
-        // addTodoHandler={()=>dispatch({type : 'todoHandler', input : input.value})} 
-
-        />
+        <ToDoForm addTodoHandler={(input) => dispatch({ type: 'todoHandler', value: input })} />
 
         {
           todos.length == 0 ?
@@ -88,12 +85,9 @@ const ToDoApp = () => {
                 selectedDateOption={selectedDateOption} />
             </div>
         }
-      </div>
-      <ToDoList
-        todos={filteredTodos}
-        // onUpdatedTodo={updatedTodo} 
 
-        />
+      </div>
+      <ToDoList todos={filteredTodos}/>
     </div>
   );
 };

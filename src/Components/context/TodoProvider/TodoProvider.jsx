@@ -15,32 +15,32 @@ const intialState = getItemsfromLS();
 const reducer = (state, action) => {
 
     switch (action.type) {
-        //     case 'todoHandler':
-        //         let today = new Date();
-        //         let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-        //         let time = today.getHours() + ":" + today.getMinutes();
-        //         let dateTime = date + ' ' + time;
+        case 'todoHandler':
+            let CreateToday = new Date();
+            let CreateDate = CreateToday.getFullYear() + '-' + (CreateToday.getMonth() + 1) + '-' + CreateToday.getDate();
+            let CreateTime = CreateToday.getHours() + ":" + CreateToday.getMinutes();
+            let CreateDateTime = CreateDate + ' ' + CreateTime ;
 
-        //         const NewTodo = {
-        //             id: Math.floor(Math.random() * 1000),
-        //             text: action.value,
-        //             isCompeleted: false,
-        //             created: dateTime
-        //         }
+            const NewTodo = {
+                id: Math.floor(Math.random() * 1000),
+                text: action.value,
+                isCompeleted: false,
+                created: CreateDateTime
+            }
 
-        //         return ([...state], action.value)
+            return [...state, NewTodo]
         case 'removeTodo':
             const removeTodos = state.filter(todo => todo.id !== action.id)
             return removeTodos
-        case 'compeleteTodo':
+        case 'completeTodo':
             const index = state.findIndex(todo => todo.id === action.id)
 
             const selectedTodos = { ...state[index] }
-            selectedTodos.isCompeleted = !selectedTodos.isCompeleted;
+            selectedTodos.isCompleted = !selectedTodos.isCompleted;
 
-            const updatedTodosCompelete = [...state]
-            updatedTodosCompelete[index] = selectedTodos;
-            return updatedTodosCompelete
+            const updatedTodosComplete = [...state]
+            updatedTodosComplete[index] = selectedTodos;
+            return updatedTodosComplete
         case 'updatedTodo':
             let today = new Date();
             let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -55,7 +55,6 @@ const reducer = (state, action) => {
             const updatedTodos = [...state]
             updatedTodos[index2] = selecteTodos;
             return updatedTodos
-
         default:
             return state
     }
@@ -84,54 +83,5 @@ const TodoProvider = ({ children }) => {
 export default TodoProvider;
 
 export const useTodos = () => useContext(todosContext);
-
-export const useTodosActions = () => {
-    const setTodos = useContext(todosContextDispatcher)
-
-    // const todos = useContext(todosContext);
-
-    // const todoHandler = (input) => {
-    //     setTodos([...todos, NewTodo])
-    // }
-
-    // const compeleteTodo = (id) => {
-    //     const index = todos.findIndex(todo => todo.id === id)
-
-    //     const selectedTodos = { ...todos[index] }
-    //     selectedTodos.isCompeleted = !selectedTodos.isCompeleted;
-
-    //     const updatedTodos = [...todos]
-    //     updatedTodos[index] = selectedTodos;
-    //     setTodos(updatedTodos);
-    //     // console.log(updatedTodos);
-    // }
-
-    // const removeTodo = (id) => {
-    //     // console.log(id);
-    //     const removeTodos = todos.filter(todo => todo.id !== id)
-    //     setTodos(removeTodos)
-    // }
-
-    // const updatedTodo = (id, newValue) => {
-
-    //     let today = new Date();
-    //     let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    //     let time = today.getHours() + ":" + today.getMinutes();
-    //     let dateTime = date + ' ' + time;
-    //     // console.log(id);
-
-    //     const index = todos.findIndex(todo => todo.id === id)
-
-    //     const selecteTodos = { ...todos[index] }
-    //     selecteTodos.text = newValue;
-    //     selecteTodos.updated = dateTime
-
-    //     const updatedTodos = [...todos]
-    //     updatedTodos[index] = selecteTodos;
-    //     setTodos(updatedTodos);
-
-    // }
-
-    // return { todoHandler, compeleteTodo, removeTodo, updatedTodo }
-}
+export const useTodosActions = () => useContext(todosContextDispatcher);
 

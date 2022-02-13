@@ -5,7 +5,7 @@ import Todo from './Todo/Todo';
 import { useTodos } from '../context/TodoProvider/TodoProvider';
 import { useTodosActions } from '../context/TodoProvider/TodoProvider';
 
-const TodoList = ({ onUpdatedTodo, onEdit, onCompelete }) => {
+const TodoList = ({ onUpdatedTodo, onEdit, onComplete }) => {
 
     const todos = useTodos();
     const dispatch = useTodosActions();
@@ -14,7 +14,7 @@ const TodoList = ({ onUpdatedTodo, onEdit, onCompelete }) => {
     const [edit, setEdit] = useState({ id: null, text: '' })
 
     const editTodo = (newValue) => {
-        dispatch({type:'updatedTodo',edit.id, vallue:newValue})
+        dispatch({ type: 'updatedTodo', id: edit.id, value: newValue })
         setEdit({ id: null, text: '' })
     }
 
@@ -25,7 +25,7 @@ const TodoList = ({ onUpdatedTodo, onEdit, onCompelete }) => {
                 key={todo.id}
                 todo={todo}
                 onEdit={() => setEdit(todo)}
-                onCompelete={() => dispatch({type : 'compeleteTodo', id: todo.id})}
+                onComplete={() => dispatch({ type: 'completeTodo', id: todo.id })}
             />
         }))
     }

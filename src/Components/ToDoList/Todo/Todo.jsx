@@ -1,14 +1,14 @@
 import { useTodosActions } from '../../context/TodoProvider/TodoProvider';
 import './Todo.css'
 
-const Todo = ({ todo, onEdit, onCompelete }) => {
+const Todo = ({ todo, onEdit, onComplete }) => {
 
     const dispatch = useTodosActions();
 
     return (
-        <li key={todo.id} className={`list-group-item col-12 d-flex justify-content-between align-items-center ${todo.isCompeleted ? 'border border-secondary' : ''}`}>
+        <li key={todo.id} className={`list-group-item col-12 d-flex justify-content-between align-items-center ${todo.isCompleted ? 'border border-secondary' : ''}`}>
             <div className='col-4'>
-                <p onClick={onCompelete} className={`todo-text ${todo.isCompeleted ? 'text-decoration-line-through text-muted' : ''}`}>{todo.text}</p>
+                <p onClick={onComplete} className={`todo-text ${todo.isCompleted ? 'text-decoration-line-through text-muted' : ''}`}>{todo.text}</p>
             </div>
             <div className='col-4 d-flex flex-column h-100'>
                 {todo.updated ?

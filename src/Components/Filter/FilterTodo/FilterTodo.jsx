@@ -4,8 +4,8 @@ import ".././Fiter.css"
 
 const options = [
     { value: 'All', label: 'All' },
-    { value: 'Notcompeleted', label: 'Notcompeleted' },
-    { value: 'Compeleted', label: 'Compeleted' },
+    { value: 'Notcompleted', label: 'Notcompleted' },
+    { value: 'Completed', label: 'Completed' },
 ];
 
 const FilterTodo = ({ selectedOption, onChange }) => {

@@ -17,7 +17,7 @@ const ToDoForm = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-
+        
         if (!input) {
             alert("Pls write something")
             return;
