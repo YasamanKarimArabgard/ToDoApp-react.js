@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import ".././Fiter.css"
+// import ".././Fiter.css"
 
 const options = [
     { value: 'All', label: 'All' },
