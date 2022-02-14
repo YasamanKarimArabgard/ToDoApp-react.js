@@ -18,7 +18,7 @@ const Todo = ({ todo, onEdit }) => {
             </div>
             <div className='col-2 col-sm-1 d-flex justify-content-between'>
                 <i class="bi bi-trash-fill text-danger" onClick={() => dispatch({ type: 'removeTodo', id: todo.id })}></i>
-                {todo.isCompleted ? null :  <i class="bi bi-pencil-square text-secondary" onClick={onEdit}></i>}
+                {todo.isCompleted ? null : <i className="bi bi-pencil-square text-secondary" onClick={onEdit}></i>}
             </div>
         </li>
     )

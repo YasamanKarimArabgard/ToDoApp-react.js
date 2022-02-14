@@ -9,6 +9,7 @@ import "./ToDoApp.css";
 const ToDoApp = () => {
 
   const [filteredTodo, setFilteredTodos] = useState([]);
+  console.log(filteredTodo);
 
   const todos = useTodos();
   const dispatch = useTodosActions();
@@ -23,7 +24,7 @@ const ToDoApp = () => {
 
         <ToDoForm addTodoHandler={(input) => dispatch({ type: 'todoHandler', value: input })} />
 
-       <Filter setFilteredTodos={setFilteredTodos} />
+       <Filter setFilteredTodos={setFilteredTodos} todos={todos} />
 
       </div>
       <ToDoList todos={filteredTodo} />

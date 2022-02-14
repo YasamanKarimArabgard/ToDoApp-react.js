@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import EditModal from '../ToDoForm/EditModal/EditModal';
-import ToDoForm from '../ToDoForm/ToDoForm';
+import EditModal from './EditModal/EditModal';
 import Todo from './Todo/Todo';
-import { useTodos } from '../context/TodoProvider/TodoProvider';
 import { useTodosActions } from '../context/TodoProvider/TodoProvider';
 
-const TodoList = () => {
+const TodoList = ({todos}) => {
 
-    const todos = useTodos();
     const dispatch = useTodosActions();
-
 
     const [edit, setEdit] = useState({ id: null, text: '' })
 
@@ -19,7 +15,7 @@ const TodoList = () => {
     }
 
     const renderToDos = () => {
-        if (todos.length === 0) return <h2 className='text-center text-secondary border rounded p-2'>Set something todo</h2>;
+        if (todos.length === 0) return <h2 className='text-center text-secondary border rounded p-2'>Set something to do</h2>;
         return (todos.map(todo => {
             return <Todo
                 key={todo.id}

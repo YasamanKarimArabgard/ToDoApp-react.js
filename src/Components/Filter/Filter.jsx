@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import FilterDate from './FilterDate/FilterDate';
 import FilterTodo from './FilterTodo/FilterTodo';
-import { useTodos } from '../context/TodoProvider/TodoProvider';
 
-const Filter = ({ setFilteredTodos }) => {
+const Filter = ({ setFilteredTodos, todos }) => {
 
     const [selectedOption, setSelectedOption] = useState('All');
-    const [selectedDateOption, setSelectedDateOption] = useState('Default');
-
-    const todos = useTodos();
+    const [selectedDate, setSelectedDate] = useState('Default');
 
     useEffect(() => {
         filterTodos(selectedOption.value)
     }, [todos, selectedOption])
 
     useEffect(() => {
-        filterTodos(selectedDateOption.value)
-    }, [todos, selectedDateOption])
+        filterDates(selectedDate.value)
+    }, [todos, selectedDate])
 
     const filterTodos = (status) => {
         switch (status) {
@@ -50,7 +47,7 @@ const Filter = ({ setFilteredTodos }) => {
     }
 
     const selectDateHandler = (e) => {
-        setSelectedDateOption(e);
+        setSelectedDate(e);
         filterDates(e.value)
     }
 
@@ -65,7 +62,7 @@ const Filter = ({ setFilteredTodos }) => {
                             selectedOption={selectedOption} />
                         <FilterDate
                             onChange={selectDateHandler}
-                            selectedDateOption={selectedDateOption} />
+                            selectedDate={selectedDate} />
                     </div>
             }
         </>
