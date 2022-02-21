@@ -7,6 +7,7 @@ const Filter = ({ setFilteredTodos, todos }) => {
     const [selectedOption, setSelectedOption] = useState('All');
     const [selectedDate, setSelectedDate] = useState('Default');
 
+
     useEffect(() => {
         filterTodos(selectedOption.value)
     }, [todos, selectedOption])
@@ -28,14 +29,22 @@ const Filter = ({ setFilteredTodos, todos }) => {
         }
     }
 
+    const latestDate = () => {
+        const todosCopy = [...todos]
+        setFilteredTodos(todosCopy.sort((a, b) => b.date - a.date))
+    }
+
+    const earliestDate = () => {
+        const todosCopy = [...todos]
+        setFilteredTodos(todosCopy.sort((a, b) => a.date - b.date))
+    }
+
     const filterDates = (status) => {
         switch (status) {
-            case 'Earliest':
-                setFilteredTodos(todos.sort((a, b) => b.date > a.date ? 1 : -1));
-                break;
             case 'Latest':
-                setFilteredTodos(todos.sort((a, b) => b.date < a.date ? -1 : 1));
-                break;
+                return latestDate()
+            case 'Earliest':
+              return earliestDate()
             default:
                 setFilteredTodos(todos)
         }
