@@ -3,16 +3,18 @@ import NavBar from '../NavBar/NavBar';
 import ToDoForm from '../ToDoForm/ToDoForm'
 import ToDoList from '../ToDoList/TodoList'
 import Filter from '../Filter/Filter';
-import { useTodos, useTodosActions } from '../context/TodoProvider/TodoProvider'
+import { useTodos, useTodosActions } from '../../context/TodoProvider/TodoProvider'
 import "./ToDoApp.css";
 
 const ToDoApp = () => {
 
-  const [filteredTodo, setFilteredTodos] = useState([]);
-  console.log(filteredTodo);
+  const [filteredTodos, setFilteredTodos] = useState([]);
+
 
   const todos = useTodos();
   const dispatch = useTodosActions();
+
+  // console.log(filteredTodos);
 
   return (
     <div className='Todo_container col-12 col-sm-10 col-md-12 col-xl-10 p-1 mt-3 d-flex flex-column align-items-center'>
@@ -24,10 +26,10 @@ const ToDoApp = () => {
 
         <ToDoForm addTodoHandler={(input) => dispatch({ type: 'todoHandler', value: input })} />
 
-       <Filter setFilteredTodos={setFilteredTodos} todos={todos} />
+        <Filter setFilteredTodos={setFilteredTodos} todos={todos} />
 
       </div>
-      <ToDoList todos={filteredTodo} />
+      <ToDoList todos={filteredTodos} />
     </div>
   );
 };

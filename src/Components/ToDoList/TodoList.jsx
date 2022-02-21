@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import EditModal from './EditModal/EditModal';
+import EditModal from './EditModal/EditModal'
 import Todo from './Todo/Todo';
-import { useTodosActions } from '../context/TodoProvider/TodoProvider';
+import { useTodosActions } from '../../context/TodoProvider/TodoProvider';
 
 const TodoList = ({todos}) => {
 
@@ -27,7 +27,7 @@ const TodoList = ({todos}) => {
 
     return (
         <div className='col-12 bg-white mt-2 rounded'>
-            <ul className='list-group col-12'>{edit.id ? <EditModal editTodo={editTodo} edit={edit} /> : renderToDos()}</ul>
+            <ul className='list-group col-12'>{edit.id ? <EditModal editTodo={editTodo} edit={edit} setEdit={setEdit} todos={todos}/> : renderToDos()}</ul>
         </div>
     );
 };

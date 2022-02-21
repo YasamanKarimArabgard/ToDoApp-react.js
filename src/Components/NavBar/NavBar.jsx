@@ -1,12 +1,11 @@
 import React from 'react';
-import { useTodos } from '../context/TodoProvider/TodoProvider'
+import { useTodos } from '../../context/TodoProvider/TodoProvider'
 
-const NavBar = ({unCompleted, completed, allTodos }) => {
+const NavBar = ({ unCompleted, completed, allTodos }) => {
 
     const todos = useTodos()
 
-    if (!unCompleted) return todos.length == 0 ? null : 
-    <p className='col-12 rounded border border-success p-1 bg-white my-1 py-2 text-success text-center'>You have done it all !</p> ;
+    if (todos.length == 0) return <p className='col-12 rounded border border-secondary p-1 bg-white my-1 py-2 text-secondary text-center'>You have nothing to do !</p>
     return (
         <header className='col-12 bg-white d-flex align-items-center justify-content-between mb-1'>
             <div className='col-4 d-flex align-items-center rounded border px-1'>

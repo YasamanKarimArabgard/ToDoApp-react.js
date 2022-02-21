@@ -39,7 +39,7 @@ const ToDoForm = (props) => {
                     ref={inputRef}>
                 </input>
                 <button type='submit' className={` col-3 col-sm-2 ${ props.edit ? 'btn btn-sm btn-outline-secondary px-3' : 'btn btn-sm btn-primary px-3'}`}>
-                    {props.edit ? 'Update' : <i class="bi bi-plus"> New</i>}
+                    {props.edit ? 'Update' : '+ New'}
                 </button>
             </form>
         </>

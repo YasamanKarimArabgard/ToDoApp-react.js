@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap'
 import ModalHeader from 'react-bootstrap/ModalHeader'
-import ToDoForm from '../ToDoForm';
+import ToDoForm from '../../ToDoForm/ToDoForm';
 
-const EditModal = ({ editTodo, edit, addTodoHandler }) => {
+const EditModal = ({ editTodo, edit, addTodoHandler, setEdit, todos }) => {
 
     const [show, setShow] = useState(false);
 
     const showModal = () => setShow(false)
-    const closeModal = () => setShow(true)
 
     return (
         <>
@@ -16,11 +15,11 @@ const EditModal = ({ editTodo, edit, addTodoHandler }) => {
                 show={() => showModal()}
                 backdrop="static"
                 keyboard={false}
-                onHide={() => closeModal()}
+                onHide={() => setEdit(() => !edit)}
             >
                 <ModalHeader closeButton>
                     <Modal.Title>
-                        <i class="bi bi-arrow-clockwise"></i>
+                        <i className="bi bi-arrow-clockwise"></i>
                         Update todo
                     </Modal.Title>
                 </ModalHeader>
