@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap'
 import ModalHeader from 'react-bootstrap/ModalHeader'
-import ToDoForm from '../../ToDoForm/ToDoForm';
+import ToDoForm from '../ToDoForm/ToDoForm';
 
 const EditModal = ({ editTodo, edit, addTodoHandler, setEdit, todos }) => {
 

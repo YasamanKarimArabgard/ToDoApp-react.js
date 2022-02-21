@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import EditModal from './EditModal/EditModal'
+import EditModal from '../EditModal/EditModal';
 import Todo from './Todo/Todo';
 import { useTodosActions } from '../../context/TodoProvider/TodoProvider';
 
