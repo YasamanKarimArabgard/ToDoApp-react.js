@@ -17,7 +17,7 @@ const ToDoApp = () => {
   // console.log(filteredTodos);
 
   return (
-    <div className='Todo_container col-12 col-sm-10 col-md-12 col-xl-10 p-1 mt-3 d-flex flex-column align-items-center'>
+    <div className='Todo_container col-12 col-sm-10 col-md-12 col-xl-10 mt-3 d-flex flex-column align-items-center'>
       <div className='col-12 rounded border p-1 bg-white'>
         <NavBar
           unCompleted={todos.filter(t => !t.isCompleted).length}
@@ -26,10 +26,12 @@ const ToDoApp = () => {
 
         <ToDoForm addTodoHandler={(input) => dispatch({ type: 'todoHandler', value: input })} />
 
-        <Filter setFilteredTodos={setFilteredTodos} todos={todos} />
-
       </div>
-      <ToDoList todos={filteredTodos} />
+
+      <div className='col-12 bg-white border rounded mt-2'>
+        <Filter setFilteredTodos={setFilteredTodos} todos={todos} />
+        <ToDoList todos={filteredTodos} />
+      </div>
     </div>
   );
 };

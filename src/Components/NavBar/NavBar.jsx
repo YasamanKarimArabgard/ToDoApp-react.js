@@ -5,9 +5,9 @@ const NavBar = ({ unCompleted, completed, allTodos }) => {
 
     const todos = useTodos()
 
-    if (todos.length == 0) return <p className='col-12 rounded border border-secondary p-1 bg-white my-1 py-2 text-secondary text-center'>You have nothing to do !</p>
+    if (todos.length == 0) return <p className='col-12 rounded border border-secondary bg-white text-secondary text-center'>You have nothing to do !</p>
     return (
-        <header className='col-12 bg-white d-flex align-items-center justify-content-between mb-1'>
+        <header className='col-12 bg-white d-flex align-items-center justify-content-between my-1'>
             <div className='col-4 d-flex align-items-center rounded border px-1'>
                 <span className='text-light px-1 badge bg-info text-light'>{allTodos}</span>
                 <h4 className='p-2 text-secondary text-truncate'>All todos</h4>

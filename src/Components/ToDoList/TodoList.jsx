@@ -26,7 +26,7 @@ const TodoList = ({todos}) => {
     }
 
     return (
-        <div className='col-12 bg-white mt-2 rounded'>
+        <div className='col-12 bg-white mt-2 rounded p-1'>
             <ul className='list-group col-12'>{edit.id ? <EditModal editTodo={editTodo} edit={edit} setEdit={setEdit} todos={todos}/> : renderToDos()}</ul>
         </div>
     );

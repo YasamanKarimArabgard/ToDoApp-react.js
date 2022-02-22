@@ -29,7 +29,7 @@ const ToDoForm = (props) => {
   
     return (
         <>
-            <form onSubmit={submitHandler} className='col-12 bg-white d-flex justify-content-between align-items-center rounded border p-1'>
+            <form onSubmit={submitHandler} className='col-12 bg-white d-flex justify-content-between align-items-center rounded border p-1 my-2'>
                 <input
                     type='text'
                     className='w-75 h-75 form-control mx-1'

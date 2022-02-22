@@ -11,7 +11,7 @@
 
 @media only screen and (max-width: 425px){
 	.todo-date{
-        font-size: 0.5em;
+        font-size: 0.7em;
         color : rgb(170, 168, 168);
     }
 }
