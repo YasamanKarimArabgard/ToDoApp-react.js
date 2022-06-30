@@ -11,8 +11,8 @@ const ToDoForm = (props) => {
     const inputRef = useRef(null)
 
     const ChangeHandler = (e) => {
-        // console.log(e.target.value);
         setInput(e.target.value)
+        // console.log(e.target.value);
     }
 
     const submitHandler = (e) => {
@@ -29,7 +29,7 @@ const ToDoForm = (props) => {
   
     return (
         <>
-            <form onSubmit={submitHandler} className='col-12 bg-white d-flex justify-content-between align-items-center rounded border p-1 my-2'>
+            <form onSubmit={submitHandler} className='col-12 bg-white d-flex justify-content-between align-items-center rounded my-2'>
                 <input
                     type='text'
                     className='w-75 h-75 form-control mx-1'
@@ -38,7 +38,7 @@ const ToDoForm = (props) => {
                     value={input}
                     ref={inputRef}>
                 </input>
-                <button type='submit' className={` col-3 col-sm-2 ${ props.edit ? 'btn btn-sm btn-outline-secondary px-3' : 'btn btn-sm btn-primary px-3'}`}>
+                <button type='submit' className={` col-3 col-sm-3 h-100 ${ props.edit ? 'btn btn-sm btn-outline-secondary px-3' : 'btn btn-sm btn-primary px-3'}`}>
                     {props.edit ? 'Update' : '+ New'}
                 </button>
             </form>

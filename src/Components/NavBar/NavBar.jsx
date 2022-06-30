@@ -5,20 +5,20 @@ const NavBar = ({ unCompleted, completed, allTodos }) => {
 
     const todos = useTodos()
 
-    if (todos.length == 0) return <p className='col-12 rounded border border-secondary bg-white text-secondary text-center'>You have nothing to do !</p>
+    if (todos.length == 0) return <p className='col-12 rounded bg-white text-secondary text-center p-2'>You have nothing to do !</p>
     return (
-        <header className='col-12 bg-white d-flex align-items-center justify-content-between my-1'>
-            <div className='col-4 d-flex align-items-center rounded border px-1'>
-                <span className='text-light px-1 badge bg-info text-light'>{allTodos}</span>
-                <h4 className='p-2 text-secondary text-truncate'>All todos</h4>
+        <header className='col-12 bg-white d-flex align-items-center justify-content-sm-center justify-content-between  my-1'>
+            <div className='col-4 col-sm-2 d-flex align-items-center px-1'>
+                <h4 className='p-2 text-secondary text-truncate text-info'>All todos</h4>
+                <span className='text-light px-1 badge bg-info text-light rounded-pill'>{allTodos}</span>
             </div>
-            <div className='col-4 d-flex align-items-center rounded border px-1'>
-                <span className='text-light px-1 badge bg-warning text-light'>{unCompleted}</span>
-                <h4 className='p-2 text-secondary text-truncate'>Not completed</h4>
+            <div className='col-4 col-sm-2 d-flex align-items-center px-1'>
+                <h4 className='p-2 text-secondary text-truncate text-warning'>Not completed</h4>
+                <span className='text-light px-1 badge bg-warning text-light rounded-pill'>{unCompleted}</span>
             </div>
-            <div className='col-4 d-flex align-items-center rounded border px-1'>
-                <span className='text-light px-1 badge bg-success text-light'>{completed}</span>
-                <h1 className='p-2 text-secondary text-truncate'>Completed</h1>
+            <div className='col-4 col-sm-2 d-flex align-items-center px-1'>
+                <h1 className='p-2 text-secondary text-truncate text-success'>Completed</h1>
+                <span className='text-light px-1 badge bg-success text-light rounded-pill'>{completed}</span>
             </div>
         </header>
 
