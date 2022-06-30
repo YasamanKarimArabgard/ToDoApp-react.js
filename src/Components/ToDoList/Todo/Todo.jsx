@@ -7,7 +7,7 @@ const Todo = ({ todo, onEdit }) => {
     const dispatch = useTodosActions();
 
     return (
-        <li key={todo.id} className={`list-group-item col-12 d-flex justify-content-between align-items-center mb-1 border p-2${todo.isCompleted ? 'border border-secondary' : ''}`}>
+        <li key={todo.id} className={`list-group-item col-12 d-flex justify-content-between align-items-center mb-1 border p-2 ${todo.isCompleted ? 'border border-secondary' : ''}`}>
             <div className='col-3'>
                 <p onClick={() => dispatch({ type: 'completeTodo', id: todo.id })} className={`todo-text d-flex overflow-hidden text-truncate p-1 ${todo.isCompleted ? 'text-decoration-line-through text-muted' : ''}`}>{todo.text}</p>
             </div>
