@@ -11,13 +11,13 @@ const options = [
 const FilterTodo = ({ selectedOption, onChange }) => {
 
     return (
-        <div className='col-6 col-sm-12 mt-1 d-flex align-items-center justify-content-between'>
-            <p className='filter-label px-1'>todo :</p>
+        <div className='col-12 col-sm-5 mt-1 d-flex align-items-center justify-content-between'>
             <Select
-                className='col-8 col-sm-11'
+                className='w-100'
                 value={selectedOption}
                 onChange={onChange}
-                options={options} />
+                options={options}
+                placeholder='Todo' />
         </div>
     );
 };

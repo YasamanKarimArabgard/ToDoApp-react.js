@@ -65,7 +65,8 @@ const Filter = ({ setFilteredTodos, todos }) => {
             {
                 todos.length == 0 ?
                     null :
-                    <div className='col-12 col-sm-12 d-flex flex-wrap justify-content-between pt-1 px-1'>
+                    <div className='col-12 col-sm-12 d-flex flex-wrap flex-sm-nowrap align-items-center pt-1 px-1'>
+                    <h5 className='mx-1 text-secondary d-none d-sm-block'>Filter by : </h5>
                         <FilterTodo
                             onChange={selectTodoHandler}
                             selectedOption={selectedOption} />

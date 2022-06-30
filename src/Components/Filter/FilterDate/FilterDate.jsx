@@ -1,4 +1,3 @@
-import React from 'react';
 import Select from 'react-select';
 // import ".././Fiter.css"
 
@@ -11,13 +10,13 @@ const options = [
 const FilterDate = ({ selectedDate, onChange }) => {
 
     return (
-        <div className='col-6 col-sm-12 mt-1 d-flex align-items-center justify-content-between'>
-            <p className='filter-label px-1'>Date :</p>
+        <div className='col-12 col-sm-5 mt-1 d-flex align-items-center justify-content-between mx-sm-2'>
             <Select
-                className='col-8 col-sm-11'
+                className='w-100'
                 options={options}
                 value={selectedDate}
-                onChange={onChange} />
+                onChange={onChange}
+                placeholder='Date' />
         </div>
     );
 };
