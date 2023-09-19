@@ -4,6 +4,8 @@ const ToDoForm = (props) => {
     
     const [input, setInput] = useState( props.edit ? props.edit.text : '')
 
+    console.log(input.value);
+
     useEffect(() => {
         inputRef.current.focus()
     }, [])
@@ -18,7 +20,7 @@ const ToDoForm = (props) => {
     const submitHandler = (e) => {
         e.preventDefault()
         
-        if (!input) {
+        if (!input | InputEvent.value === undefined) {
             alert("Pls write something")
             return;
         }
