@@ -6,7 +6,7 @@ const App = () => {
   return (
     <TodoProvider>
       <div className="container-fluid d-flex align-items-center flex-column bg-light">
-        <h1 className="pt-4 font-weight-bold">ToDo App by Yasaman Arabgard</h1>
+        <h1 className="pt-4 font-weight-bold">TO DO App by Yasaman Arabgard</h1>
         <ToDoApp />
       </div>
     </TodoProvider>
